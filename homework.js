@@ -1,18 +1,75 @@
-function getStudentFromIds(studentId) {
-  // TODO
-}
+// Commented functions are Named Function Expresions or Declarations
+// current ones are anonymous arrow functions solutions
 
-function printRecords(recordIds) {
-  // TODO
-}
+var getStudentFromIds = (studentId) =>
+  studentRecords.find((record) => record.id == studentId);
 
-function paidStudentsToEnroll() {
-  // TODO
-}
+// function getStudentFromIds(studentId) {
+//   return studentRecords.find(function matchId(record) {
+//     return record.id == studentId;
+//   });
+// }
 
-function remindUnpaid(recordIds) {
-  // TODO
-}
+var printRecords = (recordIds) =>
+  recordIds
+    .map(getStudentFromIds)
+    .sort((record1, record2) =>
+      record1.name < record2.name ? -1 : record1.name > record2.name ? 1 : 0
+    )
+    .forEach((record) =>
+      console.log(
+        `${record.name} (${record.id}): ${record.paid ? "Paid" : "Not Paid"}`
+      )
+    );
+
+// function printRecords(recordIds) {
+//   var records = recordIds.map(getStudentFromIds);
+
+//   records.sort(function sortbynameAsc(record1, record2) {
+//     if (record1.name < record2.name) return -1;
+//     else if (record1.name > record2.name) return 1;
+//     else return 0;
+//   });
+
+//   records.forEach(function printRecord(record) {
+//     console.log(
+//       `${record.name} (${record.id}): ${record.paid ? "Paid" : "Not Paid"}`
+//     );
+//   });
+// }
+
+var paidStudentsToEnroll = () => [
+  ...currentEnrollment,
+  ...studentRecords
+    .filter((record) => record.paid && !currentEnrollment.includes(record.id))
+    .map((record) => record.id),
+];
+
+// function paidStudentsToEnroll() {
+//   var recordsToEnroll = studentRecords.filter(function needToEnroll(record) {
+//     return record.paid && !currentEnrollment.includes(record.id);
+//   });
+
+//   var idsToEnroll = recordsToEnroll.map(function getStudentsId(record) {
+//     return record.id;
+//   });
+
+//   return [...currentEnrollment, ...idsToEnroll];
+// }
+
+var remindUnpaid = (recodsId) =>
+  printRecords(
+    recodsId.filter((studentId) => !getStudentFromIds(studentId).paid)
+  );
+
+// function remindUnpaid(recordIds) {
+//   var unpaidIds = recordIds.filter(function notYetPaid(studentId) {
+//     var record = getStudentFromIds(studentId);
+//     return !record.paid;
+//   });
+
+//   printRecords(unpaidIds);
+// }
 
 // ********************************
 
