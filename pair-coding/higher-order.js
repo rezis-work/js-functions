@@ -1,40 +1,83 @@
 // Run node and path to run the file to test if it is working
 // HAPPY CODING FROM REZI
-console.log("BEST DEVS ARE IN LINEDEV");
+// console.log("BEST DEVS ARE IN LINEDEV");
 
 // ##########################
 // # Higher-Order Functions #
 // ##########################
 
 // Challenge 1
-const addTwo = (num) => {};
+const addTwo = (num) => {
+  return num + 2;
+};
 
 // To check if you've completed this function, uncomment these console.logs!
 // console.log(addTwo(3));
 // console.log(addTwo(10));
 
 // Challenge 2
-const addS = (word) => {};
+const addS = (word) => {
+  return `${word}S`;
+};
 
 // Uncomment these to check your work
-// console.log(addS('pizza'));
-// console.log(addS('bagel'));
+// console.log(addS("pizza"));
+// console.log(addS("bagel"));
 
 // Challenge 3
-const map = (array, callback) => {};
+const map = (array, callback) => {
+  let newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    newArray.push(callback(array[i]));
+  }
+  return newArray;
+};
 
-// console.log(map([1, 2, 3], addTwo));
+// console.log(map([1, 2, 3], (num) => num * 2));
 
 // Challenge 4
-const forEach = (array, callback) => {};
+const forEach = (array, callback) => {
+  let alphabet = "";
+  for (let i = 0; i < array.length; i++) {
+    alphabet = callback(alphabet, array[i]);
+  }
+  return alphabet;
+};
+
+function addLetter(string, letter) {
+  string = string + letter;
+  return string;
+}
+
+// console.log(forEach(["a", "b", "c", "d"], addLetter));
 
 // See for yourself if your forEach works!
 
 // Challenge 5
-const mapWith = (array, callback) => {};
+const mapWith = (array, callback) => {
+  let newArray = [];
+  array.forEach((item) => {
+    newArray.push(callback(item));
+  });
+  return newArray;
+};
+
+// console.log(mapWith([1, 2, 3], (num) => num * 2));
 
 // Challenge 6
-const reduce = (array, callback, initialValue) => {};
+const reduce = (array, callback, initialValue) => {
+  let value = initialValue;
+  for (let i = 0; i < array.length; i++) {
+    value = callback(value, array[i]);
+  }
+  return value;
+};
+
+function add(num1, num2) {
+  return num1 + num2;
+}
+
+// console.log(reduce([1, 2, 3], addLetter, 0));
 
 // Challenge 7
 const intersection = (arrays) => {};
