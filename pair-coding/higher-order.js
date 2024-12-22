@@ -36,12 +36,11 @@ const map = (array, callback) => {
 // console.log(map([1, 2, 3], (num) => num * 2));
 
 // Challenge 4
+let alphabet = "";
 const forEach = (array, callback) => {
-  let alphabet = "";
   for (let i = 0; i < array.length; i++) {
     alphabet = callback(alphabet, array[i]);
   }
-  return alphabet;
 };
 
 function addLetter(string, letter) {
@@ -49,7 +48,8 @@ function addLetter(string, letter) {
   return string;
 }
 
-// console.log(forEach(["a", "b", "c", "d"], addLetter));
+forEach(["a", "b", "c", "d"], addLetter);
+// console.log(alphabet);
 
 // See for yourself if your forEach works!
 
@@ -77,16 +77,34 @@ function add(num1, num2) {
   return num1 + num2;
 }
 
-// console.log(reduce([1, 2, 3], addLetter, 0));
+// console.log(reduce([1, 2, 3, 4, 5], add, 0));
 
 // Challenge 7
-const intersection = (arrays) => {};
+const intersection = (array1, array2, array3) => {
+  return array1.reduce((acc, item) => {
+    if (array2.includes(item) && array3.includes(item)) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+};
 
-// console.log(intersection([5, 10, 15, 20], [15, 88, 1, 5, 7], [1, 10, 15, 5, 20]));
+// console.log(
+//   intersection([5, 10, 15, 20], [15, 88, 1, 5, 7], [1, 10, 15, 5, 20])
+// );
 // should log: [5, 15]
 
 // Challenge 8
-const union = (arrays) => {};
+const union = (...arrays) => {
+  return arrays.reduce((acc, array) => {
+    array.forEach((item) => {
+      if (!acc.includes(item)) {
+        acc.push(item);
+      }
+    });
+    return acc;
+  }, []);
+};
 
 // console.log(union([5, 10, 15], [15, 88, 1, 5, 7], [100, 15, 10, 1, 5]));
 // should log: [5, 10, 15, 88, 1, 7, 100]
