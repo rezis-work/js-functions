@@ -1,5 +1,18 @@
-const array = [1, 2, 3];
-const multiplyBy2 = (num) => num * 2;
+function display(data) {
+  console.log(data);
+}
+function printHello() {
+  console.log("hello");
+}
+function blockFor3000ms() {
+  // here will be while long loop
+}
 
-const result = array.map(multiplyBy2); // [2,4,6]
-const newresult = array.map(multiplyBy2); // [2,4,6]
+setTimeout(printHello, 0);
+
+const futureData = fetch("https://linedevltd.com/courses/javascript");
+futureData.then(display);
+
+blockFor3000ms();
+
+console.log("Me first");
